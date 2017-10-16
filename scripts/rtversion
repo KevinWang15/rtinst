@@ -44,7 +44,7 @@ if [ -z $branch ]; then
   branch=$(git describe --tags --exact-match)
   echo "Current Release: rtinst $branch"
   if [ ${branch:0:1} = v ]; then
-    latest=$(basename "$(git ls-remote --tags https://github.com/arakasi72/rtinst.git | grep -o 'refs/tags/v.*' | sort -V | tail -1)")
+    latest=$(basename "$(git ls-remote --tags https://github.com/KevinWang15/rtinst-0.9.4.git | grep -o 'refs/tags/v.*' | sort -V | tail -1)")
     if [ $branch = $latest ]; then
       echo "This is the latest release"
     else

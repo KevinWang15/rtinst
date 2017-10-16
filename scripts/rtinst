@@ -15,7 +15,7 @@
 PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/bin:/sbin
 
 # if left blank will install latest version of rtorrent, or set to a specific release E.G. '0.9.6' to install that release
-rtorrentrel=''
+rtorrentrel='0.9.4'
 
 #url's of the major components
 rt_url="http://rtorrent.net/downloads/"
@@ -223,7 +223,7 @@ else
  echo $fullrel
  echo "Only Ubuntu release 14 and later, and Debian and Raspbian release 8 and later, are supported"
  echo "Your system does not appear to be supported"
- echo "Check https://github.com/arakasi72/rtinst/wiki/Installing-on-Older-OS to see if it is supported by an earlier rtinst release"
+ echo "Check https://github.com/KevinWang15/rtinst-0.9.4/wiki/Installing-on-Older-OS to see if it is supported by an earlier rtinst release"
  exit
 fi
 
