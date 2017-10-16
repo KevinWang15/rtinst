@@ -540,7 +540,6 @@ fi
 
 sed -i "/^\(\s\|#\)*Port / c\Port $sshport" /etc/ssh/sshd_config
 sed -i "/^\(\s\|#\)*X11Forwarding /c\X11Forwarding no" /etc/ssh/sshd_config
-sed -i '/^\s*PermitRootLogin/ c\PermitRootLogin no' /etc/ssh/sshd_config
 sed -i '/^\s*PasswordAuthentication no/ c\#PasswordAuthentication no' /etc/ssh/sshd_config
 
 grep -Pq "^[#\s]*UsePAM" /etc/ssh/sshd_config && sed -i '/^\(\s\|#\)*UsePAM/ c\UsePAM yes' /etc/ssh/sshd_config || echo "UsePAM yes" >> /etc/ssh/sshd_config
@@ -865,7 +864,6 @@ echo | tee $home/rtinst.info
 
 echo "SSH Configured" | tee -a $home/rtinst.info
 echo "   SSH port set to $sshport" | tee -a $home/rtinst.info
-echo "   root login directly from SSH disabled"
 echo "   login with $user and switch to root using: sudo su"
 
 echo | tee -a $home/rtinst.info
