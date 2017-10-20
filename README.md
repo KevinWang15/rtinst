@@ -1,5 +1,13 @@
 ## rtinst
 
+## 傻瓜安装rt 0.9.4
+
+    sudo bash -c "$(wget --no-check-certificate -qO - https://raw.githubusercontent.com/KevinWang15/rtinst-0.9.4/master/rtsetup)"
+    sudo rtinst -t
+
+不会修改ssh端口，不会影响root登入
+
+
 #### 30 Second Guide
 
 Ubuntu and Debian Seedbox Installation
