@@ -530,17 +530,7 @@ echo "Configuring SSH" | tee -a $logfile
 
 oldsshport=$(grep -P '^[#\s]*Port ' /etc/ssh/sshd_config | sed 's/[^0-9]*//g')
 
-if [ "$portdefault" = "0" ]; then
-  sshport=22
-elif [ "$oldsshport" = "22" ] && [ "$portdefault" = "1" ]; then
-  sshport=$(random 21000 29000)
-else
-  sshport=$oldsshport
-fi
-
-sed -i "/^\(\s\|#\)*Port / c\Port $sshport" /etc/ssh/sshd_config
-sed -i "/^\(\s\|#\)*X11Forwarding /c\X11Forwarding no" /etc/ssh/sshd_config
-sed -i '/^\s*PasswordAuthentication no/ c\#PasswordAuthentication no' /etc/ssh/sshd_config
+sshport=22
 
 grep -Pq "^[#\s]*UsePAM" /etc/ssh/sshd_config && sed -i '/^\(\s\|#\)*UsePAM/ c\UsePAM yes' /etc/ssh/sshd_config || echo "UsePAM yes" >> /etc/ssh/sshd_config
 grep -Pq "^[#\s]*UseDNS" /etc/ssh/sshd_config && sed -i '/^\(\s\|#\)*UseDNS/ c\UseDNS no' /etc/ssh/sshd_config || echo "UseDNS no" >> /etc/ssh/sshd_config
@@ -557,7 +547,6 @@ if ! [ -z "$allowlist" ]; then
         adduser $ssh_user sshuser
       fi
     done
-  sed -i "/$allowlist/ d" /etc/ssh/sshd_config
 fi
 grep "AllowGroups sudo sshuser" /etc/ssh/sshd_config > /dev/null || echo "AllowGroups sudo sshuser" >> /etc/ssh/sshd_config
 
